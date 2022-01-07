@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consultas",
+  "info": {
+    "name": "Consulta",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "asunto": {
+      "type": "string",
+      "required": true
+    },
+    "tipo_de_caso": {
+      "type": "enumeration",
+      "enum": [
+        "Familiar",
+        "Laboral",
+        "Civil",
+        "Penal"
+      ],
+      "required": false
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "archivos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "id_pago": {
+      "type": "string"
+    },
+    "tipo_consulta": {
+      "type": "enumeration",
+      "enum": [
+        "organica",
+        "emergencia"
+      ],
+      "required": true
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "hora": {
+      "type": "time"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "consultas"
+    }
+  }
+}
